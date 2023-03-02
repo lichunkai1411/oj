@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Text26 {
     // 温度判断
     public static void main(String[] args) {
-        Scanner roomtemperature = new Scanner(System.in);
+        Scanner roomTemperature = new Scanner(System.in);
         // 读取用户输入的温度
-        double temperature = roomtemperature.nextDouble();
+        double temperature = roomTemperature.nextDouble();
         // 如果温度大于40
         if (temperature > 40) {
             // 输出"resile"

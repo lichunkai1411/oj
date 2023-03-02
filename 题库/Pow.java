@@ -1,22 +1,24 @@
-/**
- * 实现pow(x，n)即计算x的整数n次幂函数
- * 当n为偶数时，对n分治，拆分x*x的n/2的次方，当n为奇数时拆分x*pow(x,n-1)
- */
+import java.util.Scanner;
 
+/**
+ * @Author Lick
+ * @date Created in 2022-11-29 22:02
+ */
 public class Pow {
-    public double pow(double x, int n) {
-        long N = n;
-        return N >= 0 ? pow(x, N) : 1.0 / pow(x, -N);
+    public static void main(String[] args) {
+        stdInput();
     }
 
-    public double pow(double x, long y) {
-        if (y == 0) {
-            return 1.0;
-        }
-        double result = pow(x, y / 2);
-        return y % 2 == 0 ? result * result : result * result * x;
+    public static void stdInput() {
+        Scanner input = new Scanner(System.in);
+        String inputStr = input.next();
+        String[] inputArray = inputStr.split(",");
+        doProgram(Double.valueOf(inputArray[0]), Integer.valueOf(inputArray[1]));
+    }
 
+    public static void doProgram(double x, Integer n) {
+        //Write Code Here...
+        double a = Math.pow(x, n);
+        System.out.printf("%.5f\n", a);
     }
 }
-
-

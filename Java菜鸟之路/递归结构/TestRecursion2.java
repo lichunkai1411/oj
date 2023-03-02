@@ -11,7 +11,7 @@ public class TestRecursion2 {
         int a = input.nextInt();
         long result = 1;
         while (a>1){
-            result *=a*(a-1);
+            result *= (long) a *(a-1);
             a-=2;
         }
         long end = System.currentTimeMillis();    // 获取当前时刻

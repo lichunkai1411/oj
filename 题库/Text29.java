@@ -6,11 +6,11 @@ public class Text29 {
         Scanner input = new Scanner(System.in);
         // 读取用户输入的是否为预约；是否为大额业务；
         boolean reserve = input.nextBoolean();
-        boolean bigbusiness = input.nextBoolean();
+        boolean bigBusiness = input.nextBoolean();
         // 接收用户输入权限
         int permission = input.nextInt();
         // 如果用户没有预约或者预约的不是大额业务
-        if (!reserve || !bigbusiness) {
+        if (!reserve || !bigBusiness) {
             // 输出"Please make an appointment for large business"
             System.out.println("Please make an appointment for large business");
             // 否则

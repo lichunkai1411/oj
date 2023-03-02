@@ -7,7 +7,6 @@ public class SxtStu {
     int id;
     int age;
     String name;
-
     public void study() {
         System.out.println("正在学习！");
     }

@@ -6,9 +6,10 @@ public class Text10for {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int max = 0;
-        for (int i = 0; i < 3; i++) {
+        // 三个数
+        for (int i = 1; i < 4; i++) {
             int num = input.nextInt();
-            if (i == 0) {
+            if (i == 1) {
                 max = num;
             }
             if (num > max) {

@@ -6,18 +6,15 @@ package Java面向对象编程.static本质;
 public class TestStatic {
     int id; // id
     String name; // name
-
+    String pwd; // password
     static String company = "淘宝";   // 公司名称
-
     public TestStatic(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
     public void login() {
-        printCompany();
-        System.out.println(company);
-        System.out.println(name);
+        System.out.println("登录"+name);
     }
 
     public static void printCompany() {

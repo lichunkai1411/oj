@@ -6,6 +6,7 @@ public class Text11 {
         Scanner input = new Scanner(System.in);
         // 引用一个字符串
         String eat = input.next();
+//        不建议此方法写
         // if (eat.equals("meat") || eat.equals("egg") || eat.equals("chicken") || eat.equals("scallion")) {
         // 如果是"meat"||"egg"||"scallion"||"chicken"
         if ("meat".equals(eat) || "egg".equals(eat) || "chicken".equals(eat) || "scallion".equals(eat)) {

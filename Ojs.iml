@@ -206,6 +206,8 @@
       <sourceFolder url="file://$MODULE_DIR$/C语言程序设计" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/FlappyBird" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/kaoshi" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Demo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JavaSE进阶" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

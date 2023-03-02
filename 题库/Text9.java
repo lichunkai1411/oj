@@ -20,12 +20,12 @@ public class Text9 {
                     // 输出"water"
                     System.out.println("water");
                 }
-                // 否则
+                // 如果不是周三
             } else {
                 // 输出"study"
                 System.out.println("study");
             }
-            // 否则
+            // 如果星期小于1或者大于7
         } else {
             // 输出"error
             System.out.println("error");

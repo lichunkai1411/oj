@@ -7,6 +7,7 @@ public class Text10 {
         Scanner input = new Scanner(System.in);
         // 导入一个数
         int max = 0;
+        // 接收的第一个数
         int i = 1;
         // 三个数
         while (i <= 3) {

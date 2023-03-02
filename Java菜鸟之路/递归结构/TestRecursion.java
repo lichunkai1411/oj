@@ -13,7 +13,7 @@ public class TestRecursion {
        long result = factorial(input.nextInt());
        long end = System.currentTimeMillis(); // 获取当前时刻
         System.out.println(result);
-        System.out.println("该程序运行共耗时："+(end - start));  // 获取运行耗时
+        System.out.println("该程序运行共耗时："+(end - start)+"ms");  // 获取运行耗时
     }
     // 阶乘：5*4*3*2*1
     public static long factorial(int n) {

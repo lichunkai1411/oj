@@ -21,11 +21,13 @@ class ChildClass extends FatherClass {
     public int age;
 
     public void f() {
-        super.f();  // 调用父类的普通方法
+        // 使用super关键字调用父类的普通方法
+        super.f();
         value = 200;
         System.out.println("ChildClass.value = " + value);
         System.out.println(value);
-        System.out.println(super.value);  // 调用父类的成员变量
+        // 使用super关键字调用父类的成员变量
+        System.out.println(super.value);
     }
 
     public void f2() {

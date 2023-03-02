@@ -13,8 +13,8 @@ public class User {
     }
 
     public User(int id) {    // 重载了一个参数的构造器
-
-        this.id = id;    // 对象的属性
+// 对象的属性
+        this.id = id;
     }
 
     public User(int id, String name) {     // 重载了两个参数的构造器

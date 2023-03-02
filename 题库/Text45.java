@@ -8,7 +8,7 @@ public class Text45 {
         // 读取用户输入
         int input = scan.nextInt();
         // 定义未知数n
-        int n = 1;
+        int num = 1;
         // 如果输入小于0
         if (input < 0) {
             // 输出打印error
@@ -18,10 +18,10 @@ public class Text45 {
             // 进入for循环
             for (int i = 1; i <= input; i++) {
                 // 未知数乘i并赋值给n
-                n = n * i;
+                num = num * i;
             }
             // 输出打印n
-            System.out.println(n);
+            System.out.println(num);
         }
     }
 }
