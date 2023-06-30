@@ -10,32 +10,26 @@ import java.util.Scanner;
  */
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.next();
-        int n = str.length();
-        boolean[][] dp = new boolean[n][n];
-        String res = "";
-        for (int len = 1; len <= n; len++) {
-            for (int i = 0; i + len - 1 < n; i++) {
-                int j = i + len - 1;
-                if (len == 1) {
-                    dp[i][j] = true;
-                } else {
-                    boolean b = str.charAt(i) == str.charAt(j);
-                    if (len == 2) {
-                        dp[i][j] = b;
-                    } else {
-                        dp[i][j] = (b && dp[i + 1][j - 1]);
-                    }
-                }
-                if (dp[i][j] && len > res.length()) {
-                    res = str.substring(i, j + 1);
-                }
-            }
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+            String str = input.nextLine();
+            String result = capitalize(str);
+            System.out.println(result);
         }
-        System.out.println(res);
+
+        public static String capitalize(String str) {
+            String[] words = str.split("\\s+");
+            StringBuilder sb = new StringBuilder();
+            for (String word : words) {
+                if (word.length() > 1) {
+                    sb.append(Character.toUpperCase(word.charAt(0)))
+                            .append(word.substring(1).toLowerCase());
+                } else {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                }
+                sb.append(" ");
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            return sb.toString();
+        }
     }
-}
-
-
