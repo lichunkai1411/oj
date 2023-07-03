@@ -4,15 +4,20 @@ public class Test12 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        String[] words = input.split("\\s+");
-        StringBuilder sb = new StringBuilder();
+        String capitalizedString = capitalizeFirstLetter(input);
+        System.out.println(capitalizedString);
+    }
+
+    public static String capitalizeFirstLetter(String input) {
+        String[] words = input.toLowerCase().split(" ");
+        StringBuilder result = new StringBuilder();
         for (String word : words) {
-            if (word.length() > 0) {
-                sb.append(Character.toUpperCase(word.charAt(0)));
-                sb.append(word.substring(1).toLowerCase());
+            if (!word.isEmpty()) { // 忽略空字符串
+                char firstChar = Character.toUpperCase(word.charAt(0));
+                String restOfWord = word.substring(1);
+                result.append(firstChar).append(restOfWord).append(" ");
             }
-            sb.append(" ");
         }
-        System.out.println(sb.toString().trim());
+        return result.toString().trim();
     }
 }
