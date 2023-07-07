@@ -1,5 +1,3 @@
-package test;
-
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -7,10 +5,9 @@ import java.util.Stack;
  * Created by IntelliJ IDEA.
  * Author：Lick
  * Date Created in 2023-07-04
- * Time：15:37
+ * Time：15:33
  */
-
-public class Main {
+public class Test25 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
