@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学测验</title>
+</head>
+<body>
+<div id="app">
+    <h1>数学测验</h1>
+    <div v-for="(question, index) in questions" :key="index" class="question">
+        <p>{{ question.expression }} = </p>
+        <input v-model="userAnswers[index]" type="number" placeholder="答案">
+        <button @click="checkAnswer(index)">检查</button>
+        <img v-if="showResults[index]" :src="getResultImage(index)" :alt="getResultAlt(index)">
+    </div>
+    <button @click="generateNewQuestions">新问题</button>
+</div>
+<style>
+    .question {
+        margin-bottom: 10px;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            questions: [],
+            userAnswers: [],
+            showResults: []
+        },
+        methods: {
+            generateNewQuestions() {
+                this.questions = [];
+                this.userAnswers = [];
+                this.showResults = [];
+                for (let i = 0; i < 4; i++) {
+                    const num1 = Math.floor(Math.random() * 10); // 生成0到9的数
+                    const num2 = Math.floor(Math.random() * 10); // 生成0到9的数
+                    const correctAnswer = num1 * num2;
+
+                    this.questions.push({
+                        expression: num1 + ' × ' + num2,
+                        correctAnswer: correctAnswer
+                    });
+                    this.userAnswers.push('');
+                    this.showResults.push(false);
+                }
+            },
+            checkAnswer(index) {
+                const correctAnswer = this.questions[index].correctAnswer;
+                const userAnswer = parseFloat(this.userAnswers[index]);
+                this.showResults.splice(index, 1, true); // Update the result state for this question
+                return userAnswer === correctAnswer;
+            },
+            getResultImage(index) {
+                return this.isCorrect(index) ? 'image/correct.png' : 'image/incorrect.png';
+            },
+            getResultAlt(index) {
+                return this.isCorrect(index) ? 'Correct' : 'Incorrect';
+            },
+            isCorrect(index) {
+                const correctAnswer = this.questions[index].correctAnswer;
+                const userAnswer = parseFloat(this.userAnswers[index]);
+                return userAnswer === correctAnswer;
+            }
+        },
+        mounted() {
+            this.generateNewQuestions();
+        }
+    });
+</script>
+</body>
+</html>

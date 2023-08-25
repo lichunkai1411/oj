@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学测验</title>
+</head>
+<body>
+<div id="app">
+    <h1>数学测验</h1>
+    <div v-for="(row, rowIndex) in questionMatrix" :key="rowIndex" class="question-row">
+        <div v-for="(question, colIndex) in row" :key="colIndex" class="question">
+            <p>{{ question.expression }} = </p>
+            <input v-model="userAnswers[rowIndex][colIndex]" type="number" placeholder="答案">
+            <img v-if="showResults[rowIndex][colIndex]" :src="getResultImage(rowIndex, colIndex)" :alt="getResultAlt(rowIndex, colIndex)">
+        </div>
+    </div>
+    <button @click="checkAnswers">判定</button>
+    <button @click="generateNewQuestions">新问题</button>
+</div>
+<style>
+    .question-row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .question {
+        margin-right: 10px;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            questionMatrix: [],
+            userAnswers: [],
+            showResults: []
+        },
+        methods: {
+            generateNewQuestions() {
+                this.questionMatrix = [];
+                this.userAnswers = [];
+                this.showResults = [];
+                for (let i = 0; i < 6; i++) {
+                    const row = [];
+                    const userRow = [];
+                    const resultRow = [];
+                    for (let j = 0; j < 4; j++) {
+                        const num1 = Math.floor(Math.random() * 10); // 生成0到9的数
+                        const num2 = Math.floor(Math.random() * 10); // 生成0到9的数
+                        const correctAnswer = num1 * num2;
+
+                        row.push({
+                            expression: num1 + ' × ' + num2,
+                            correctAnswer: correctAnswer
+                        });
+                        userRow.push('');
+                        resultRow.push(false);
+                    }
+                    this.questionMatrix.push(row);
+                    this.userAnswers.push(userRow);
+                    this.showResults.push(resultRow);
+                }
+            },
+            checkAnswers() {
+                for (let i = 0; i < 6; i++) {
+                    for (let j = 0; j < 4; j++) {
+                        const correctAnswer = this.questionMatrix[i][j].correctAnswer;
+                        const userAnswer = parseFloat(this.userAnswers[i][j]);
+                        this.showResults[i].splice(j, 1, true);
+                    }
+                }
+            },
+            getResultImage(rowIndex, colIndex) {
+                return this.isCorrect(rowIndex, colIndex) ? 'image/correct.png' : 'image/incorrect.png';
+            },
+            getResultAlt(rowIndex, colIndex) {
+                return this.isCorrect(rowIndex, colIndex) ? 'Correct' : 'Incorrect';
+            },
+            isCorrect(rowIndex, colIndex) {
+                const correctAnswer = this.questionMatrix[rowIndex][colIndex].correctAnswer;
+                const userAnswer = parseFloat(this.userAnswers[rowIndex][colIndex]);
+                return userAnswer === correctAnswer;
+            }
+        },
+        mounted() {
+            this.generateNewQuestions();
+        }
+    });
+</script>
+</body>
+</html>

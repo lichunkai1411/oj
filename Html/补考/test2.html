@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学测验</title>
+</head>
+<body>
+<div id="app">
+    <h1>数学测验</h1>
+    <p>{{ question.expression }} = </p>
+    <input v-model="userAnswer" type="number" placeholder="答案">
+    <button @click="checkAnswer">检查</button>
+    <button @click="generateNewQuestion">新问题</button>
+    <img v-if="showResult && isCorrect" src="image/correct.png" alt="Correct">
+    <img v-if="showResult && !isCorrect" src="image/incorrect.png" alt="Incorrect">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            question: {},
+            userAnswer: '',
+            showResult: false,
+            isCorrect: false
+        },
+        methods: {
+            generateNewQuestion() {
+                let num1 = Math.floor(Math.random() * 10); // 生成0到9的数
+                let num2 = Math.floor(Math.random() * 10); // 生成0到9的数
+                let correctAnswer = num1 * num2;
+
+                this.question = {
+                    expression: num1 + ' × ' + num2,
+                    correctAnswer: correctAnswer
+                };
+                this.userAnswer = '';
+                this.showResult = false;
+                this.isCorrect = false;
+            },
+            checkAnswer() {
+                const correctAnswer = this.question.correctAnswer;
+                if (parseFloat(this.userAnswer) === correctAnswer) {
+                    this.isCorrect = true;
+                } else {
+                    this.isCorrect = false;
+                }
+                this.showResult = true;
+            }
+        },
+        mounted() {
+            this.generateNewQuestion();
+        }
+    });
+</script>
+</body>
+</html>
