@@ -8,7 +8,7 @@ public class Love {
             for (float x=-2.3f;x<2.3f;x+=0.041f){
                 float a = x*x+y*y-4f;
                 if ((a*a*a-x*x*y*y*y)<-0.0f){
-                    String str = "I LOVE YOU 陈雨萱";
+                    String str = "I LOVE YOU 北软";
                     int num = count%str.length();
                     System.err.print(str.charAt(num));
                     count++;
